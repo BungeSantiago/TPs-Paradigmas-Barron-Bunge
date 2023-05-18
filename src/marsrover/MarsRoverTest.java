@@ -103,14 +103,15 @@ import org.junit.jupiter.api.Test;
 }
 @Test public void test14MarsStopWithUnknounCommand(){
 	Point point = new Point(0,1);
-	MarsRover rover = new MarsRover(new Point(0,0), new North());
+	MarsRover rover1 = new MarsRover(new Point(0,0), new North());
+	MarsRover rover2 = new MarsRover(new Point(0,0), new North());
 	try {
-	      rover.move("frui");
+	      rover2.move("frui");
 	    } catch ( Exception e ) {
 	      assertEquals(  MarsRover.UnknownCommand , e.getMessage() );
 	    }
-    assertEquals( point, rover.getPosition() );
-    assertEquals( new East(), rover.getOrientation() );
+    assertEquals( rover1.move("fr").getPosition(), rover2.getPosition() );
+    assertEquals( rover1.move("fr").getOrientation(), rover2.getOrientation() );
 }
 
 }
